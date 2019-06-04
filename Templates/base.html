@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8>">
+    <title>Cardiological measurements graphing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+
+<body>
+<div class="container">
+<div id="header">
+    <button class="upperButton">Main</button>
+    <button class="upperButton">Boxplot</button>
+</div>
+{% block content %}
+
+{% endblock %}
+
+    </div>
+</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!--<script src="/static/plotajax.js"></script>-->
+
+    <script type="text/javascript">
+
+        var graphs = {{graphJSON | safe}};
+
+        var layout = {
+        title: 'Cardiological measurements',
+        yaxis: {
+        title: "quantity",}
+        };
+
+        Plotly.newPlot('chart',graphs,layout,{});
+
+    </script>
+
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="/plot">
+    <div style="margin-top:50px;">
+    Patient ID
+    <select id="patients" name="patients" class="selectbox">
+        {% for x in patients %}
+        <option value='{{x}}' {% if selectedpatient==x%} selected="selected"{% endif %}}}>{{x}}</option>
+        {% endfor %}
+    </select>
+    </div>
+    <br/>
+    <!--<input type="submit" id="submit-button" name="submit-button">-->
+    <div>
+    <button id="submit-button" name="submit-button" class="drawboxbutton">Plot boxplot</button>
+    </div>
+</form>
+
+    <div id="chart" style="width:800px;" class="chart">
+
+    </div>
+
+{% endblock %}
